@@ -11,3 +11,6 @@ This component handles specific logic for the scheduler.
 
 ## Component 4
 This component handles specific logic for the scheduler.
+
+## Component 5
+This component handles specific logic for the scheduler.
