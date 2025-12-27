@@ -23,3 +23,6 @@ Returns details for resource 7.
 
 ### GET /api/v1/resource/8
 Returns details for resource 8.
+
+### GET /api/v1/resource/9
+Returns details for resource 9.
