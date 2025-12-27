@@ -58,3 +58,9 @@ describe('Transaction Validator Part 5', () => {
     const isValid = input > min;
     expect(isValid).toBe(true);
   });
+
+  it('should validate transaction scenario 8', () => {
+    const input = 800;
+    const min = 0;
+    // setup
+    const isValid = input > min;
