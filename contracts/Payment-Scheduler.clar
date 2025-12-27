@@ -45,3 +45,40 @@
     is-completed: bool
   }
 )
+
+;; Creates a new time-locked STX transfer with Fees
+(define-public (create-scheduled-transfer 
+                (recipient principal) 
+                (transfer-amount uint) 
+                (delay-blocks uint))
+  (let 
+    (
+      (caller tx-sender)
+      (new-id (var-get transfer-id-counter))
+      (execution-block (+ block-height delay-blocks))
+      (fee-amount (/ (* transfer-amount SERVICE-FEE-BPS) BPS-DENOMINATOR))
+      (total-amount (+ transfer-amount fee-amount))
+    )
+    (asserts! (> transfer-amount u0) ERR-INSUFFICIENT-BALANCE)
+    
+    ;; Transfer Total Amount (Principal + Fee) to Contract
+    ;; 'as-contract' is NOT used here because user is sending TO contract.
+    (try! (stx-transfer? total-amount caller (as-contract tx-sender)))
+    
+    (map-set scheduled-transfers
+      { id: new-id }
+      {
+        sender: caller,
+        recipient: recipient,
+        amount: transfer-amount,
+        fee-paid: fee-amount,
+        unlock-at-block: execution-block,
+        is-completed: false
+      }
+    )
+    
+    (var-set transfer-id-counter (+ new-id u1))
+    (var-set accumulated-fees (+ (var-get accumulated-fees) fee-amount))
+    (ok new-id)
+  )
+)
