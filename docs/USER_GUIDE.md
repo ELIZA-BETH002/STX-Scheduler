@@ -9,3 +9,5 @@
 4. Open the application and navigate to the dashboard.
 
 5. Open the application and navigate to the dashboard.
+
+6. Open the application and navigate to the dashboard.
