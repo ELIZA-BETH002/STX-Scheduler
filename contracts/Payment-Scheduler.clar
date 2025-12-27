@@ -16,3 +16,19 @@
 (define-constant ERR-EXECUTION-TOO-EARLY (err u105))
 (define-constant ERR-TRANSFER-FAILURE (err u106))
 (define-constant ERR-INVALID-RECIPIENT (err u107))
+
+;; Minimum blocks required between scheduling and execution
+(define-constant min-blocks-before-execution u1)
+
+;; Service Fee: 5% (Basis points: 500) - High fees to attract protocol revenue
+(define-constant SERVICE-FEE-BPS u500)
+(define-constant BPS-DENOMINATOR u10000)
+
+;; Principal authorized to perform administrative operations
+(define-data-var admin-principal principal tx-sender)
+
+;; Sequential identifier for tracking all transfers
+(define-data-var transfer-id-counter uint u0)
+
+;; Accumulated Fees
+(define-data-var accumulated-fees uint u0)
