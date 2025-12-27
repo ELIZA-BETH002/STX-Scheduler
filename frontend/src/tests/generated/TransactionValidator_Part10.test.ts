@@ -82,3 +82,4 @@ describe('Transaction Validator Part 10', () => {
     const isValid = input > min;
     expect(isValid).toBe(true);
   });
+});
