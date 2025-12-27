@@ -32,3 +32,16 @@
 
 ;; Accumulated Fees
 (define-data-var accumulated-fees uint u0)
+
+;; Core storage for scheduled transfer details
+(define-map scheduled-transfers
+  { id: uint }
+  {
+    sender: principal,
+    recipient: principal,
+    amount: uint,
+    fee-paid: uint,
+    unlock-at-block: uint,
+    is-completed: bool
+  }
+)
