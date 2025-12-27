@@ -17,3 +17,5 @@
 8. Open the application and navigate to the dashboard.
 
 9. Open the application and navigate to the dashboard.
+
+10. Open the application and navigate to the dashboard.
