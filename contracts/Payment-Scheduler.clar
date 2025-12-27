@@ -82,3 +82,28 @@
     (ok new-id)
   )
 )
+
+;; Executes a matured time-locked transfer
+(define-public (execute-transfer (id uint))
+  (let 
+    (
+      (transfer-data (unwrap! (map-get? scheduled-transfers { id: id }) ERR-TRANSFER-NOT-FOUND))
+      (recipient-address (get recipient transfer-data))
+      (locked-amount (get amount transfer-data))
+      (already-completed (get is-completed transfer-data))
+      (unlock-block (get unlock-at-block transfer-data))
+    )
+    (asserts! (not already-completed) ERR-ALREADY-EXECUTED)
+    (asserts! (>= block-height unlock-block) ERR-EXECUTION-TOO-EARLY)
+    
+    ;; Transfer locked amount to recipient from contract
+    ;; Using as-contract strictly for context switching as required by Stacks
+    (try! (as-contract (stx-transfer? locked-amount tx-sender recipient-address)))
+    
+    (map-set scheduled-transfers
+      { id: id }
+      (merge transfer-data { is-completed: true })
+    )
+    (ok true)
+  )
+)
