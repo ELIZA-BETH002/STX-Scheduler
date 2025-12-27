@@ -7,3 +7,5 @@
 3. Open the application and navigate to the dashboard.
 
 4. Open the application and navigate to the dashboard.
+
+5. Open the application and navigate to the dashboard.
