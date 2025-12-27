@@ -11,7 +11,7 @@ async function main() {
         fs.mkdirSync(DOCS_DIR, { recursive: true });
     }
 
-    const branchName = 'docs/comprehensive-wiki';
+    const branchName = 'docs/wiki-v2';
     createBranch(branchName);
 
     // 1. Architecture Docs
