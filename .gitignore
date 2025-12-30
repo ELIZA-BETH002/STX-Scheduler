@@ -18,4 +18,4 @@ node_modules
 **/execute-payment.js
 **/deploy.js
 **/event-logger-v2.js
-**/deployments/**
+**/deployments/****/scripts/*.ps1
