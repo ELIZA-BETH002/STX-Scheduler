@@ -11,3 +11,11 @@ coverage
 *.info
 costs-reports.json
 node_modules
+.env
+**/scripts/*.js
+**/scenario.js
+**/schedule-payment.js
+**/execute-payment.js
+**/deploy.js
+**/event-logger-v2.js
+**/deployments/**

@@ -6,8 +6,8 @@ telemetry = true
 cache_dir = './.cache'
 requirements = []
 [contracts.Payment-Scheduler]
-path = 'contracts/Payment-Scheduler.clar'
-clarity_version = 4
+path = 'contracts/Payment-Scheduler-v2.clar'
+clarity_version = 3
 epoch = 3.3
 [repl.analysis]
 passes = ['check_checker']
